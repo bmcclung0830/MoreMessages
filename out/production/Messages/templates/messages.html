@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+
 <form action="/create-message" method="post">
     <input type="text" placeholder="Enter your message" name="userMessage"/>
     <button type="submit">Save</button>
 </form>
+
+<form action="/delete-message" method="post">
+    <input type="number" placeholder="Message #" name="delete"/>
+    <button type="submit">Delete</button>
+</form>
+
+<form action="/edit-message" method="post">
+    <input type="number" placeholder="Message #" name="number"/>
+    <input type="text" placeholder="Enter new message" name="edit"/>
+    <button type="submit">Edit</button>
+</form>
+
 Messages:
 <hr>
 <div align="left">
+    <ol>
 {{#messages}}
-{{message}} </br>
+<li>{{message}}</li>
 {{/messages}}
+    </ol>
 </div>
+
 </body>
+
 </html>

@@ -45,6 +45,7 @@ public class Main {
                     String name = request.queryParams("userName");
                     String password = request.queryParams("password");
                     User user = new User(name, password);
+                    String userCheck = String.valueOf(user.getPassword());
 
                     users.put(name, user);
 
@@ -52,10 +53,13 @@ public class Main {
                     session.attribute("userName", name);
                     session.attribute("password", password);
 
-                    if (!user.equals(null)){
+                    if (name.equalsIgnoreCase(null)){
                         users.put(name, new User(name, password));
+                        if (password.matches(userCheck)){
+                            response.redirect("/");
+                        }
+                        else { response.redirect("create-user"); }
                     }
-                    response.redirect("/");
                     return "";
                 })
         );
